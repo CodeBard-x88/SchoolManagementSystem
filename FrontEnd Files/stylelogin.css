@@ -1,0 +1,87 @@
+
+.bg_ball {
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    position: absolute;
+    top: 24%; /* Center vertically */
+    left: 37%; /* Center horizontally */
+	transform: translate(-26%, -40%); /* Center both horizontally and vertically */
+    animation-name: animate-ball;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    background: rgb(46, 67, 255);
+    background: linear-gradient(318deg, rgba(46, 67, 255, 1) 0%, rgba(135, 168, 255, 1) 100%);
+    transition: all 1.55s ease;
+}
+
+.bg_ball:hover
+{
+    height: 120px;
+    width: 120px;
+}
+
+.card 
+{
+	height: 500px;
+    width: 400px;
+	margin-top: 70px;
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1001;
+    border-radius: 50px;
+    background-color: rgba(229, 233, 246, 0.4);
+    box-shadow: 0 4px 30px rgba(150, 150, 150, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.card h1
+ {
+    text-transform: uppercase;
+    color: #555555;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    margin-top: 100px;
+    transition: all .55s ease;
+}
+
+.card h1:hover
+{
+    color: #3d72ff;
+}
+
+form 
+{
+    padding-top: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+input
+{
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.field
+ {
+    background: transparent;
+    border: none;
+    color: #333333;
+    border-bottom: 1px solid #333333;
+
+}
+
+.field:focus
+{
+    border-radius: 50px;
+    border: none;
+}
+
