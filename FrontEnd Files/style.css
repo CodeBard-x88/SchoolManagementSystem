@@ -103,12 +103,14 @@ body
    display: flex;
    margin-left: 35rem;
    
+   
 }
 .navbar ul li{
 
     list-style: none;
     font-size: 1.5rem;
 	font-weight: 600;
+    
     
 }
 

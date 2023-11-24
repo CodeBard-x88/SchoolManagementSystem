@@ -1,5 +1,6 @@
 
-.bg_ball_1 {
+.bg_ball_1
+ {
     height: 100px;
     width: 100px;
     border-radius: 100px;
@@ -7,10 +8,6 @@
     top: 27%; /* Center vertically */
     left: 20%; /* Center horizontally */
 	transform: translate(-26%, -40%); /* Center both horizontally and vertically */
-    animation-name: animate-ball;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease;
     background: rgb(46, 67, 255);
     background: linear-gradient(318deg, rgba(46, 67, 255, 1) 0%, rgba(135, 168, 255, 1) 100%);
     transition: all 1.55s ease;
@@ -35,6 +32,8 @@ input{
     background-color: rgba(229, 233, 246, 0.4);
     box-shadow: 0 4px 30px rgba(150, 150, 150, 0.1);
     backdrop-filter: blur(10px);
+    border-bottom: solid  rgb(46, 67, 255);
+
 }
 .card2 h1
 {
@@ -49,6 +48,9 @@ input{
 .card2 h1:hover
 {
     color: #3d72ff;
+}
+.btn1{
+    margin-bottom: 500px;
 }
 
 

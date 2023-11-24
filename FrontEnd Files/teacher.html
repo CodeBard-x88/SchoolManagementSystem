@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylelogin.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="create.css">
+    <title>Document</title>
+</head>
+
+<header>
+    <nav class="navbar">
+        <section class="container">
+            <div class="logo">
+                <h1>SMS</h1>
+            </div>
+
+            <ul>
+                <li class="item"><a href="home.html">Home</a></li>
+                <li class="item"><a href="">About</a></li>
+                <li class="item"><a href="">Contact</a></li>
+                <li class="item"><a href="">Log In</a></li>
+            </ul>
+        </section>
+    </nav>
+</header>
+
+<body>
+
+    <section class="container1">
+        <div class="bg_ball_1"></div>
+
+        <div class="card2">
+            <h1>Create Teacher Account</h1>
+            <form action="">
+                    <input type="text" id="name" name="name" placeholder="Full Name" class="field" required>
+                    <input type="text" id="uname" name="username" placeholder="Username" class="field" required>
+                    <input type="number" id="Cnic" name="tCnic" placeholder="CNIC" class="field" required>
+                    <input type="number" id="age" name="age" placeholder="Age" class="field" required min="4" max="18"><br>
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" class="field" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select><br><br>
+                    <input type="number" id="phone" name="phone" placeholder="Phone" class="field" required>
+                    <input type="text" id="city" name="city" placeholder="City" class="field" required>
+                    <input type="password" id="pass" name="password" placeholder="Password" class="field" required>
+                
+                    <button class="btn btn1">Create Account</button>
+                    
+            </form>
+           
+        </div>
+        
+        
+    </section>
+
+</body>
+
+</html>

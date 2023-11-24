@@ -7,10 +7,6 @@
     top: 24%; /* Center vertically */
     left: 37%; /* Center horizontally */
 	transform: translate(-26%, -40%); /* Center both horizontally and vertically */
-    animation-name: animate-ball;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease;
     background: rgb(46, 67, 255);
     background: linear-gradient(318deg, rgba(46, 67, 255, 1) 0%, rgba(135, 168, 255, 1) 100%);
     transition: all 1.55s ease;
