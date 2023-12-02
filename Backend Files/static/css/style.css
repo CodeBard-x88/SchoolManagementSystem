@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+  
+}
+
+body
+{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration-color: black;
+    background-color: #e5e9f6;
+}
+
+/* csss variable */
+:root{
+
+}
+/* utility classex */
+
+.h-primary{
+    font-size: 3.8rem;
+    padding: 12px;
+
+}
+.h-secondary{
+    font-size: 2.8rem;
+    padding: 12px;
+
+}
+.center{
+    text-align: center;
+}
+
+.container{
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    display: inline-flex;
+}
+.container1{
+    max-width: 1200px;
+    width: 90%;
+    margin-left: 1000px;
+    display: inline-flex;
+}
+.btn 
+{
+    background: linear-gradient(318deg, rgba(46, 67, 255, 1) 0%, rgba(135, 168, 255, 1) 100%);
+    color: #fffdff;
+    border-radius: 50px;
+    border: none;
+    padding: 15px 30px;
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    font-weight: 600;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: all .55s ease;
+}
+
+.btn:hover {
+    padding: 17px 32px;
+}
+/* navigation bar */
+.navbar
+{
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+
+}
+.navbar::before{
+
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: .4;
+
+}
+/* logo and im age */
+.logo{
+	font-size: 30px;
+	font-weight: 700;
+	color: black;
+	transition: all .55s ease;
+}
+
+.logo:hover{
+	color: #3d72ff;
+}
+/* list styling */
+.navbar ul{
+   display: flex;
+   margin-left: 35rem;
+   
+   
+}
+.navbar ul li{
+
+    list-style: none;
+    font-size: 1.5rem;
+	font-weight: 600;
+    
+    
+}
+
+.navbar ul li a
+{
+    color: black;
+    display: block;
+    padding: 3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+.navbar ul li a:hover{
+   
+    color: #3d72ff;
+    border: #3d72ff solid 1px;
+}
+.navbar ul li a:active{
+   
+    background-color: #3d72ff;
+    color: whitesmoke;
+    border: #3d72ff solid 1px;
+}
+
