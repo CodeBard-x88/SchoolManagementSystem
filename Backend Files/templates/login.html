@@ -1,3 +1,5 @@
+<!-- login.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,37 +10,33 @@
     <title>Document</title>
 </head>
 <body>
-     
-
     <nav class="navbar">
         <section class="container">
-        <div class="logo">
-            <h1>SMS</h1>
-        </div>
+            <div class="logo">
+                <h1>SMS</h1>
+            </div>
 
-        <ul>
-        <li class="item"><a href="home.html">Home</a></li>
-        <li class="item"><a href="">About</a></li>
-        <li class="item"><a href="">Contact</a></li>
-        <li class="item"><a href="">Log In</a></li>
-        </ul>
-    </section>
+            <ul>
+                <li class="item"><a href="home.html">Home</a></li>
+                <li class="item"><a href="">About</a></li>
+                <li class="item"><a href="">Contact</a></li>
+                <li class="item"><a href="">Log In</a></li>
+            </ul>
+        </section>
     </nav>
 
-
-    <div >
-    <section class="container1">
-    <div class="bg_ball"></div>
-    <div class="card">
-    <h1>Login</h1>
-    <form action="">
-    <input type="text" id="uname" name="username" placeholder="Username" class="field" required><br>
-    <input type="password" id="pass" name="password" placeholder="Password" class="field" required><br><br>
-    <input type="submit" value="Submit" class="btn" href="/admin_Login">
-    </form>
+    <div>
+        <section class="container1">
+            <div class="bg_ball"></div>
+            <div class="card">
+                <h1>Login</h1>
+                <form method="POST" action="{{ url_for('calladminLogin') }}">
+                    <input type="text" id="uname" name="username" placeholder="Username" class="field" required><br>
+                    <input type="password" id="pass" name="password" placeholder="Password" class="field" required><br><br>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </section>
     </div>
-    
-    </section>
- 
 </body>
 </html>
