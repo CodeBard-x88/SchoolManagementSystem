@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html
+{
+  
+}
+
+body
+{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration-color: black;
+    background-color: #e5e9f6;
+}
+
+/* csss variable */
+:root{
+
+}
+/* utility classex */
+
+.container
+{
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+/* navigation bar */
+.navbar
+{
+        position: relative;
+        display:flex;
+        align-items: center;
+        padding: 0.5rem;
+        background:#3d72ff;
+
+}
+.navbar::before
+{
+
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: .4;
+
+}
+/* logo and im age */
+.logo
+{
+	font-size: 15px;
+	font-weight: 700;
+	color:#e5e9f6;
+	transition: all .55s ease;
+}
+
+.logo:hover
+{
+    color: black;
+}
+/* list styling */
+.navbar ul
+{
+   display: flex;
+   margin-left: 30rem;  
+}
+.navbar ul li
+{
+    list-style: none;
+    font-size: 0.8rem;
+	font-weight: 600;   
+}
+
+.navbar ul li a
+{
+    color:#e5e9f6;
+    display: block;
+    padding: 2px 15px;
+    border-radius: 18px;
+    text-decoration: none;
+}
+.navbar ul li a:hover
+{
+    color:#e5e9f6;
+    border:#e5e9f6 solid 1px;
+}
+.navbar ul li a:active
+{
+    background-color:#e5e9f6;
+    color:#3d72ff;
+    border:#e5e9f6 solid 1px;
+}
+.btn 
+{
+    background: linear-gradient(318deg, rgba(46, 67, 255, 1) 0%, rgba(135, 168, 255, 1) 100%);
+    color: #fffdff;
+    border-radius: 50px;
+    border: none;
+    padding: 15px 30px;
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    font-weight: 600;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: all .55s ease;
+}
+
+.btn:hover {
+    padding: 17px 32px;
+}
+
+.container11
+{
+    height: 500px;
+    width: 800px;
+	margin-top: 70px;
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+ 
+}
+
+.profile-section {
+    border-left: 4px solid #3d72ff;
+    border-right: 4px solid #3d72ff;
+    border-bottom: 4px solid #3d72ff;
+   
+    margin-top: 20px;
+}
+.back_profile
+{
+    background:  #3d72ff;
+    color: #fffdff;
+}
+.profile-info 
+{
+    padding: 25px;
+    font-size: 14px;
+}
+
+.profile-info p
+ {
+    margin-bottom: 10px;
+}
+
