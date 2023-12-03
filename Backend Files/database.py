@@ -14,9 +14,4 @@ except Exception as e:
     print(f"Error creating SQLAlchemy object: {e}")
     db = None
 
-@app.route('/')
-def hello_world():
-    return render_template("login.html")
 
-if(__name__ == "__main__"):
-    app.run(debug=True)
