@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__, static_folder='static')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/ssms'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost:8080/ssms'
 
 
 try:
