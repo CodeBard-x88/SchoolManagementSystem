@@ -80,6 +80,16 @@ class Student(Users, db.Model):
             db.session.add(challan)
             db.session.commit()
 
+    def getDetails(self):
+        details = f"Student Details:\nName: {self.name}\nClass: {self.class_name}\nParent: {self.parent.getName()}\nPhone Number: {self.phone_number}\nAddress: {self.address}\nGender: {self.gender}\nFee Concession: {self.fee_concession}"
+        
+        if self.fee_challan:
+            details += f"\n\nFee Challan Details:\n{self.fee_challan.viewChallanDetails()}"
+        else:
+            details += "\nNo fee challan generated."
+
+        return details
+
     def viewChallanDetails(self):
         # Assuming FeeChallan class has a method to view details
         if self.fee_challan:
