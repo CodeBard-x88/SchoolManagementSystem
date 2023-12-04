@@ -56,6 +56,10 @@ class Teacher(Users, db.Model):
         # Assuming Student class has a method to retrieve details
         return student.getDetails()
 
+    def conductMeeting(self, meeting):
+        # Assuming Meeting class has a method to conduct a meeting
+        return meeting.conduct()
+
     def Login(self,table_name):
         try:
             # sql = text(f'SELECT * FROM {table_name} WHERE username = :user_name AND password = :user_password')
