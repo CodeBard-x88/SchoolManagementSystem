@@ -5,17 +5,18 @@ from admin import Admin
 app, db = create_app()
 
 class SchoolManagementSystem:
-
+    
     def __init__(self):
         self.name = "School Management System"
 
     def adminLogin(self,user,password_):
             try:
                 print('creating admin object')
-                admin_ = Admin(name=None, username=user, password=password_, email=None, contact_number=None)
-                admin_.Login()
+                admin_ = Admin(username=user, password=password_)
+                return admin_.Login('admin')
             except Exception as e:
                 print(f"Exception: {e}")
+                return False
 
 sms = SchoolManagementSystem()  
 
@@ -28,11 +29,10 @@ def calladminLogin():
     if(request.method=='POST'):
        username= request.form['username']
        password = request.form['password']
-       if username and password:        # validating that there is some input in the variables
-            sms.adminLogin(username, password)
-       else:     
-            #Empty variable will redirect the user to login page
-            return redirect(url_for('/admin_login'))
+       if (sms.adminLogin(username, password)==True):
+           return render_template("admin.html")         #if login is successful, dashboard is opened
+       else:
+           hello_world()
 
 if __name__ == "__main__":
     app.run(debug=True)
