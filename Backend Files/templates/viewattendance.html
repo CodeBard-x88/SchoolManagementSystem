@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SMS </title>
+    <title>SMS</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
+  
     <nav class="navbar">
         <section class="container">
             <div class="logo">
@@ -23,20 +24,34 @@
             </ul>
         </section>
     </nav>
-   
+
     <section class="container11">
-        <!-- Profile Section -->
-        <div class="profile-section">
-            <h2 class="back_profile">Student Information</h2>
-            <div class="profile-info">
-                <p><strong>Name:</strong> {{ name }}</p>
-                <p><strong>Father Name:</strong> {{ father_name }}</p>
-                <p><strong>Address:</strong> {{ address }}</p>
-                <p><strong>CNIC:</strong> {{ cnic }}</p>
-                <p><strong>Gender:</strong> {{ gender }}</p>
-                <p><strong>Class:</strong> {{ student_class }}</p>
-            </div>
-        </div>
+        <h2>Your Attendance</h2>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">SNo</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            
+            <!--
+            <tbody>    
+                {% for attendanceRecord in allAttendance %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ attendanceRecord.date }}</td>
+                        <td>{{ attendanceRecord.subject }}</td>
+                        <td>{{ attendanceRecord.status }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            -->
+        </table>
+       <!-- {% endif %} -->
     </section>
+
 </body>
 </html>
