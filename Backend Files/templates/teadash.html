@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> SMS </title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css') }}">
 </head>
 <body>
   
@@ -21,18 +21,7 @@
         </ul>
     </section>
     </nav>
-    <section class="container11">
-        <div class="profile-section">
-            <h2 class="back_profile">Teacher Information</h2>
-            <div class="profile-info">
-                <p><strong>Name:</strong> {{ name }}</p>
-                <p><strong>CNIC:</strong> {{ cnic }}</p>
-                <p><strong>Gender:</strong> {{ gender }}</p>
-                <p><strong>Phone No:</strong> {{ phno }}</p>
-                <p><strong>Class Taught:</strong> {{ student_class }}</p>
-            </div>
-        </div>
-    </section>
+  
 
 </body>
 </html>

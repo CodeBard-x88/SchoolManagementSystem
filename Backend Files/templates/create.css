@@ -17,8 +17,9 @@
     height: 120px;
     width: 120px;
 }
-
-
+input{
+    padding: 10px;
+}
 .card2 
 {
     height: 500px;
@@ -34,10 +35,6 @@
     border-bottom: solid  rgb(46, 67, 255);
 
 }
-.h1_spacing{
-    padding-bottom: 5px;
-
-}
 .card2 h1
 {
         text-transform: uppercase;
@@ -47,47 +44,13 @@
         font-size: 28;
         margin-top: 60px;
         transition: all .55s ease;
-       
 }
-
 .card2 h1:hover
 {
     color: #3d72ff;
 }
-.btn1
-{
+.btn1{
     margin-bottom: 500px;
 }
-form 
-{
-    padding-top: 40px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-input
-{
-    padding: 10px 20px;
-    margin-bottom: 20px;
-}
-
-.field
- {
-    background: transparent;
-    border: none;
-    color: #333333;
-    border-bottom: 1px solid #333333;
-
-}
-
-.field:focus
-{
-    border-radius: 50px;
-    border: none;
-}
-
 
 
