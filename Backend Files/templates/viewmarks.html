@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  
+    <nav class="navbar">
+        <section class="container">
+            <div class="logo">
+                <h1>Student Dashboard</h1>
+            </div>
+            <ul>
+                <li class="item"><a href="">Courses</a></li>
+                <li class="item"><a href="">Marks</a></li>
+                <li class="item"><a href="">Attendance</a></li>
+                <li class="item"><a href="leaveform.html">Leave Request</a></li>
+                <li class="item"><a href="feeconcession.html">Fee Concession</a></li>
+                <li class="item"><a href="">Fee Challan</a></li>
+                <li class="item"><a href="">Class behaviour</a></li>
+            </ul>
+        </section>
+    </nav>
+
+    <section class="container11">
+        <h2>Your Subjects and Marks</h2>
+        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">SNo</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Test Type</th>
+                        <th scope="col">Obtained Marks</th>
+                        <th scope="col">Total Marks</th>
+                    </tr>
+                </thead>
+                        
+              <!--<tbody>    
+                    {% for subject in allSubjects %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ subject.name }}</td>
+                            <td>{{ subject.test_type }}</td>
+                            <td>{{ subject.obtained_marks }}</td>
+                            <td>{{ subject.total_marks }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody> --> 
+            </table>
+       <!-- {% endif %} -->
+    </section>
+
+</body>
+</html>
