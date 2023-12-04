@@ -4,27 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="create.css">
-   <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylelogin.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/create.css') }}">
+
     <title>Document</title>
 </head>
 
+<header>
     <nav class="navbar">
         <section class="container">
             <div class="logo">
-                <h1>Administrative Dashboard</h1>
+                <h1>SMS</h1>
             </div>
 
             <ul>
-                <li class="item"><a href="create.html">Register Teacher</a></li>
-                <li class="item"><a href="home.html">Register Parent</a></li>
-                <li class="item"><a href="delete.html">Delete teacher </a></li>
-                <li class="item"><a href="delpar.html">Delete Student </a></li>
-                <li class="item"><a href="delstd.html">Delete Parent </a></li>
-                <li class="item"><a href="login.html">Manages Fee</a></li>
+                <li class="item"><a href="home.html">Home</a></li>
+                <li class="item"><a href="">About</a></li>
+                <li class="item"><a href="">Contact</a></li>
+                <li class="item"><a href="">Log In</a></li>
             </ul>
         </section>
     </nav>
+</header>
 
 <body>
 
@@ -32,14 +34,13 @@
         <div class="bg_ball_1"></div>
 
         <div class="card2">
-            <h1 class="h1_spacing">Create Student Account</h1>
+            <h1>Create Student Account</h1>
             <form action="">
                 <div class="form-group">
                     <input type="text" id="name" name="name" placeholder="Full Name" class="field" required>
                     <input type="text" id="uname" name="username" placeholder="Username" class="field" required>
                     <input type="number" id="studentCnic" name="studentCnic" placeholder="Student CNIC" class="field" required>
                     <input type="number" id="age" name="age" placeholder="Age" class="field" required min="4" max="18"><br>
-                    <input type="number" id="class" name="class" placeholder="class" class="field" required min="1" max="10"><br>
                     <label for="gender">Gender:</label>
                     <select id="gender" name="gender" class="field" required>
                         <option value="male">Male</option>
@@ -48,7 +49,7 @@
                     </select><br><br>
                     <input type="text" id="fatherName" name="fatherName" placeholder="Father's Name" class="field" required>
                     <input type="number" id="fatherCnic" name="fatherCnic" placeholder="Father's CNIC" class="field" required>
-                   
+                    <input type="number" id="phone" name="phone" placeholder="Phone" class="field" required>
                     <input type="text" id="city" name="city" placeholder="City" class="field" required>
                     <input type="password" id="pass" name="password" placeholder="Password" class="field" required>
                     <button class="btn" id="btn1">Create Account</button>

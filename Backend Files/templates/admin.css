@@ -31,6 +31,7 @@ body
     display: flex;
 }
 
+
 /* navigation bar */
 .navbar
 {
@@ -116,57 +117,3 @@ body
 .btn:hover {
     padding: 17px 32px;
 }
-
-.container11
-{
-    height: 500px;
-    width: 800px;
-	margin-top: 70px;
-    position: absolute;
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
- 
-}
-
-.profile-section {
-    border-left: 4px solid #3d72ff;
-    border-right: 4px solid #3d72ff;
-    border-bottom: 4px solid #3d72ff;
-   
-    margin-top: 20px;
-}
-.back_profile
-{
-    background:  #3d72ff;
-    color: #fffdff;
-}
-.profile-info 
-{
-    padding: 25px;
-    font-size: 14px;
-}
-
-.profile-info p
- {
-    margin-bottom: 10px;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th 
-{
-    background:  #3d72ff;
-    color: #fffdff;
-}
-
