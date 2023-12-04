@@ -7,7 +7,7 @@ from FeeChallan import FeeChallan
 
 app,db = create_app()
 
-class Student(db.Model):
+class Student(Users, db.Model):
     __tablename__ = 'students'
 
     id = db.Column(db.Integer, primary_key=True)
