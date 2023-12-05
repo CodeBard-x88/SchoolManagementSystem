@@ -13,7 +13,7 @@ class SchoolManagementSystem:
             try:
                 print('creating admin object')
                 admin_ = Admin(username=user, password=password_)
-                return admin_.Login('admin')
+                return admin_.Login()
             except Exception as e:
                 print(f"Exception: {e}")
                 return False
@@ -32,7 +32,7 @@ def calladminLogin():
        if (sms.adminLogin(username, password)==True):
            return render_template("admin.html")         #if login is successful, dashboard is opened
        else:
-           hello_world()
+           return render_template("login.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
