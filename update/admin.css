@@ -152,3 +152,21 @@ body
     margin-bottom: 10px;
 }
 
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th 
+{
+    background:  #3d72ff;
+    color: #fffdff;
+}
+
