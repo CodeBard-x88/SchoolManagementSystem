@@ -16,27 +16,33 @@
                 <h1>SMS</h1>
             </div>
 
-            <ul>
+            <!-- <ul>
                 <li class="item"><a href="home.html">Home</a></li>
                 <li class="item"><a href="">About</a></li>
                 <li class="item"><a href="">Contact</a></li>
                 <li class="item"><a href="">Log In</a></li>
-            </ul>
+            </ul> -->
         </section>
     </nav>
-
+    
     <div>
-        <section class="container1">
-            <div class="bg_ball"></div>
-            <div class="card">
-                <h1>Login</h1>
-                <form method="POST" action="{{ url_for('calladminLogin') }}">
-                    <input type="text" id="uname" name="username" placeholder="Username" class="field" required><br>
-                    <input type="password" id="pass" name="password" placeholder="Password" class="field" required><br><br>
-                    <button type="submit" class="btn">Submit</button>
-                </form>
-            </div>
-        </section>
-    </div>
+    <section class="container1">
+    <div class="bg_ball"></div>
+    <div class="card">
+    <h1>Login</h1>
+    <form method="POST" action="{{ url_for('calladminLogin') }}">
+        <select name="user_type" class="field user-type-dropdown" required>
+            <option value="admin">Admin</option>
+            <option value="parent">Parent</option>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+        </select><br>
+        <input type="text" id="uname" name="username" placeholder="Username" class="field" required><br>
+        <input type="password" id="pass" name="password" placeholder="Password" class="field" required><br><br>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+</section>
+</div>
 </body>
 </html>

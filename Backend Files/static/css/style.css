@@ -6,8 +6,21 @@
     box-sizing: border-box;
 }
 
-html{
-  
+
+
+.field.user-type-dropdown {
+    /* Add styles for the dropdown here */
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background: transparent;
+    border: none;
+    color: #333333;
+    border-bottom: 1px solid #333333;
+}
+
+.field.user-type-dropdown:focus {
+    border-radius: 50px;
+    border: none;
 }
 
 body
@@ -18,9 +31,7 @@ body
 }
 
 /* csss variable */
-:root{
 
-}
 /* utility classex */
 
 .h-primary{
