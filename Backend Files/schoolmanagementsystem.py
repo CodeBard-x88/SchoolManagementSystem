@@ -6,26 +6,35 @@ app, db = create_app()
 
 class SchoolManagementSystem:
     
+    __admin_ = None
+    __name = None
     def __init__(self):
         self.name = "School Management System"
+        self.admin_ = None
 
     def adminLogin(self,user,password_): 
+            
             try:
                 print('creating admin object')
-                admin_ = Admin(username=user, password=password_)
-                return admin_.Login()
+                temp = Admin(username=user, password=password_)
+                boolean, admin_ = temp.Login()        #here the admin_ will be initialized and will perform the operations along this object
+                return boolean
             except Exception as e:
                 print(f"Exception: {e}")
                 return False
 
+    def adminLogout(self):
+         self.admin_=None
+
 sms = SchoolManagementSystem()  
 
 @app.route('/')
-def hello_world():
-    return render_template("login.html")
+def LoadLoginPage(message=None):
+    return render_template("login.html",UI_message=message)
 
 @app.route('/admin_Login', methods=['GET', 'POST'])
 def callLogin():
+
     if(request.method=='POST'):
        user_type = request.form['user_type']
        username= request.form['username']
@@ -33,17 +42,21 @@ def callLogin():
        if(user_type=='admin'):
            if (sms.adminLogin(username, password)==True):
                return render_template("admin.html")         #if login is successful, dashboard is opened
-           else:
-                return render_template("login.html")         #if login is successful, dashboard is opened
        elif(user_type=='parent'):
              pass
        elif(user_type=='teacher'):
              pass
-       elif(user_type=='student'):
-              pass
        else:
-              return render_template("login.html")
-        
+              pass
+       return LoadLoginPage("Incorrect Credentials!")
+
+
+@app.route('/admin_logout',methods=['GET','POST'])
+def callLogout():
+     sms.adminLogout()
+     return LoadLoginPage("Logged Out!")
+()
+
 if __name__ == "__main__":
     app.run(debug=True)
     

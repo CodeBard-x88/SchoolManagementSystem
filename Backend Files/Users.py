@@ -34,7 +34,12 @@ class Users():
         finally:
             if found:
                 print('Admin found')
-                return True
+                return True, found
             else:
                 print('Admin not found')
         return False
+    
+    def Logout(self):
+        pass
+    
+

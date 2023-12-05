@@ -5,10 +5,6 @@
     box-sizing: border-box;
 }
 
-html
-{
-  
-}
 
 body
 {
@@ -18,17 +14,15 @@ body
 }
 
 /* csss variable */
-:root{
 
-}
 /* utility classex */
 
 .container
 {
-    max-width: 1200px;
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
+    max-width: 1300px;
+    width: 110%;
+    margin: 10px auto;
+    display: inline-flex;
 }
 
 

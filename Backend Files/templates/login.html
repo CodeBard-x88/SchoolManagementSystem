@@ -31,14 +31,21 @@
     <div class="card">
     <h1>Login</h1>
     <form method="POST" action="{{ url_for('callLogin') }}">
+        <div style="text-align: center;">
         <select name="user_type" class="field user-type-dropdown" required>
             <option value="admin">Admin</option>
             <option value="parent">Parent</option>
             <option value="student">Student</option>
             <option value="teacher">Teacher</option>
-        </select><br>
+        </select></div><br>
         <input type="text" id="uname" name="username" placeholder="Username" class="field" required><br>
         <input type="password" id="pass" name="password" placeholder="Password" class="field" required><br><br>
+        <div id="messageBox" class="message-box">
+            {% if UI_message %}
+                <p style="color: red; text-align: center;">{{ UI_message }}</p>
+            {% endif %}
+        </div>
+        
         <button type="submit" class="btn">Submit</button>
     </form>
 </div>
