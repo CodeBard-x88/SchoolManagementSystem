@@ -30,7 +30,7 @@ class SchoolManagementSystem:
             try:
                 print('creating Student object')
                 temp = Student(username=user, password=password_)
-                boolean, studnet_ = temp.Login()        #here the student_ will be initialized and will perform the operations along this object
+                boolean, student_ = temp.Login()        #here the student_ will be initialized and will perform the operations along this object
                 return boolean
             except Exception as e:
                 print(f"Exception: {e}")
