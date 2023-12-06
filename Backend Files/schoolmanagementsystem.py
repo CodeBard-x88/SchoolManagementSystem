@@ -11,8 +11,8 @@ class SchoolManagementSystem:
     __name = None
     def __init__(self):
         self.name = "School Management System"
-        self.admin_ = None
-        self.student_=None
+        self.admin_ = Admin()
+        self.student_=Student()
 
     def adminLogin(self,user,password_): 
             
@@ -30,7 +30,7 @@ class SchoolManagementSystem:
             try:
                 print('creating Student object')
                 temp = Student(username=user, password=password_)
-                boolean, student_ = temp.Login()        #here the student_ will be initialized and will perform the operations along this object
+                boolean, studnet_ = temp.Login()        #here the student_ will be initialized and will perform the operations along this object
                 return boolean
             except Exception as e:
                 print(f"Exception: {e}")
@@ -39,13 +39,13 @@ class SchoolManagementSystem:
     def AddStudent(self,request_):
         name = request_.form['name']
         username = request_.form['username']
-        password = request_.form['pssword']
+        password = request_.form['password']
         email = request_.form['email']
         phone =request_.form['phone']
         class_ = request_.form['class_']
         gender = request_.form['gender']
-        parent_id = request_.form['parendID']
-        address = request_.__form['address']
+        parent_id = request_.form['parentID']
+        address = request_.form['address']
         parent_phone = request_.form['parentphone']
         return self.admin_.AddStudent(name,username,password,email,phone,class_,gender,parent_id,address,parent_phone)
 

@@ -12,7 +12,6 @@ def create_app():
     #app.config['SQLALCHEMY_DATABASE_URI']='postgresql://avnadmin:AVNS_kayd37s41kGGRqSThn8@sms-school-management-system.a.aivencloud.com:10884/sms?sslmode=require'
     app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:password@localhost/sms'
     db.init_app(app)
-    print('database connected')
     return app,db
 
     """

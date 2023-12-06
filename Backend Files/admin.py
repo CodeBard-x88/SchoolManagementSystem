@@ -7,31 +7,26 @@ from student import Student
 app, db= create_app()
 
 class Admin(Users, db.Model):
-
     """
-    Defining the table structure in database
+    Defining the table structure in the database
     """
     __tablename__ = 'admin'
-    sno = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255))
-    username = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), nullable=True)
-    contact_number = db.Column(db.String(15), nullable=True)
+    #contact_number = db.Column(db.String(15), nullable=True)
 
-    def __init__(self, name=None, username=None, password=None, email=None, contact_number=None):
-        super().__init__(name, username, password, email, contact_number)
-
+    def __init__(self, name=None, username=None, password=None, email=None, contactnumber=None):
+        super().__init__(name, username, password, email, phone=contactnumber)
     def AddStudent(self, name, username, password, email, phone, class_, gender, parent_id, address, parent_phone):
      try:
-        std = Student(name, username, password, email, phone, class_, gender, parent_id, address, parent_phone)
+        # Use the parameters passed to the method instead of attributes from Admin
+        std = Student(name=name, username=username, password=password, email=email, phone=phone, enrolled_class=class_, Gender=gender, parent_ID=parent_id, address=address, parent_contact=parent_phone)
         db.session.add(std)
         db.session.commit()
-        return True 
+        return True
      except Exception as e:
         print(f"Error during commit: {e}")
-        db.session.rollback()  
-        return False  
+        db.session.rollback()
+        return False
      finally:
         db.session.close()
+
 
