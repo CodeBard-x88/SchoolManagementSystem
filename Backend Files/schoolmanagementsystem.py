@@ -38,28 +38,6 @@ class SchoolManagementSystem:
             except Exception as e:
                 print(f"Exception: {e}")
                 return False
-    
-    # def teacherLogin(self,user,password_): 
-            
-    #         try:
-    #             print('creating teacher object')
-    #             temp = Teacher(username=user, password=password_)
-    #             boolean, teacher_ = temp.Login()        #here the teacher_ will be initialized and will perform the operations along this object
-    #             return boolean
-    #         except Exception as e:
-    #             print(f"Exception: {e}")
-    #             return False
-            
-    # def parentLogin(self,user,password_): 
-            
-    #         try:
-    #             print('creating parent object')
-    #             temp = Parent(username=user, password=password_)
-    #             boolean, parent_ = temp.Login()        #here the parent_ will be initialized and will perform the operations along this object
-    #             return boolean
-    #         except Exception as e:
-    #             print(f"Exception: {e}")
-    #             return False
 
     def AddStudent(self,request_):
         name = request_.form['name']
@@ -72,7 +50,9 @@ class SchoolManagementSystem:
         parent_id = request_.form['parentID']
         address = request_.form['address']
         parent_phone = request_.form['parentphone']
-        return self.admin_.AddStudent(name,username,password,email,phone,class_,gender,parent_id,address,parent_phone)
+        parentname = request.form['parentname']
+        parentemail = request.form['parentemail']
+        return self.admin_.AddStudent(name,username,password,email,phone,class_,gender,parent_id,address,parent_phone,parentname,parentemail)
 
     def DeleteStudent(self, user):
         return self.admin_.DeleteStudent(user)
@@ -133,10 +113,11 @@ def LoadTeacherForm(message=None):
 @app.route('/add_studnet', methods=['GET', 'POST'])
 def add_Student():
     if request.method == 'POST':
-        if sms.AddStudent(request):
-            return LoadStudentForm("Student Added Successfully.")
+        boolean, msg = sms.AddStudent(request)
+        if boolean:
+            return LoadStudentForm(msg)
         else:
-            return LoadStudentForm("Student can't be added")
+            return LoadStudentForm(msg)
     else:
         # Handle GET request or other methods if needed
         return LoadStudentForm("Invalid request method")

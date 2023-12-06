@@ -44,6 +44,7 @@
                     <input type="text" id="name" name="name" placeholder="Full Name" class="field" required>
                     <input type="text" id="uname" name="username" placeholder="Username" class="field" required>
                     <input type="email" id="email" name="email" placeholder="Student Email" class="field" required>
+                    <input type="text" id="phone" name="phone" placeholder="Phone" class="field" required>
                     <label for="class_">Class:</label>
                     <select id="class_" name="class_" class="field" required>
                         <option value="1">1</option>
@@ -63,11 +64,17 @@
                         <option value="F">Female</option>
                     </select><br><br>
                     <input type="text" id="address" name="address" placeholder="Address" class="field" required>
+                    <input type="text" id="parentname" name="parentname" placeholder="Parent Name" class="field" required>
                     <input type="number" id="fatherCnic" name="parentID" placeholder="Father's CNIC" class="field" required>
-                    <input type="number" id="phone" name="phone" placeholder="Phone" class="field" required>
                     <input type="text" id="parentphone" name="parentphone" placeholder="Parent Contact" class="field" required>
+                    <input type="email" id="parentemail" name="parentemail" placeholder="Parent Email" class="field" required>
                     <input type="password" id="pass" name="password" placeholder="Password" class="field" required>
                     <button class="btn" id="btn1">Create Account</button>
+                    <div id="messageBox" class="message-box">
+                        {% if UI_message %}
+                            <p style="color: rgb(97, 70, 70); text-align: center;">{{ UI_message }}</p>
+                        {% endif %}
+                    </div>
                 </div>
                   
      

@@ -6,24 +6,12 @@ from database import create_app
 
 app,db = create_app()
 
-class Parent(Users):
+class Parent(Users, db.Model):
 
     __tablename__ = 'parent'
 
-    id = db.Column(db.Integer, primary_key=True)
-    student_id = db.Column(db.Integer, nullable=False)
-    address = db.Column(db.String(255), nullable=False)
-    phone_number = db.Column(db.String(15), nullable=False)
-    #fee_concession = db.Column(db.String(255), nullable=False)
-    students = db.relationship('Student', backref='parent', lazy=True)
-
-    def __init__(self, name=None, username=None, password=None, email=None, phone=None,
-                 student_id=None, address=None, phone_number=None):
+    def __init__(self, name=None, username=None, password=None, email=None, phone=None):
         super().__init__(name, username, password, email, phone)
-        self.student_id = student_id
-        self.address = address
-        self.phone_number = phone_number
-        #self.fee_concession = fee_concession
 
     def setName(self, name):
         self.name = name
