@@ -49,9 +49,14 @@ class SchoolManagementSystem:
         parent_phone = request_.form['parentphone']
         return self.admin_.AddStudent(name,username,password,email,phone,class_,gender,parent_id,address,parent_phone)
 
+    def DeleteStudent(self, user):
+        return self.admin_.DeleteStudent(user)
 
     def adminLogout(self):
          self.admin_=None
+
+    def StudentLogout(self):
+        self.student_=None
 
 sms = SchoolManagementSystem()  
 
@@ -79,8 +84,13 @@ def callLogin():
        return LoadLoginPage("Incorrect Credentials!")
 
 @app.route('/admin_logout',methods=['GET','POST'])
-def callLogout():
+def callAdminLogout():
      sms.adminLogout()
+     return LoadLoginPage("Logged Out!")
+
+@app.route('/student_logout',methods=['GET','POST'])
+def callStudentLogout():
+     sms.StudentLogout()
      return LoadLoginPage("Logged Out!")
 
 @app.route('/StudentForm')
@@ -102,7 +112,22 @@ def add_Student():
         # Handle GET request or other methods if needed
         return LoadStudentForm("Invalid request method")
 
-     
+@app.route('/deleteStudent',methods=['GET','POST'])
+def delete_Student():
+    if(request.method=='POST'):
+        std_username = request.form['std_username']
+        if sms.DeleteStudent(std_username):
+            return LoadDelStudent("Student Successfully removed.")
+        else:
+            return LoadDelStudent(f"Student with username {std_username} does not exist!")
+    
+@app.route('/render_delstd')
+def LoadDelStudent(message=None):
+    return render_template('delstd.html',UI_message=message)
+
+@app.route('/render_admindash')
+def LoadAdminDash():
+    return render_template('admin.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

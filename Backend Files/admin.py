@@ -15,6 +15,7 @@ class Admin(Users, db.Model):
 
     def __init__(self, name=None, username=None, password=None, email=None, contactnumber=None):
         super().__init__(name, username, password, email, phone=contactnumber)
+
     def AddStudent(self, name, username, password, email, phone, class_, gender, parent_id, address, parent_phone):
      try:
         # Use the parameters passed to the method instead of attributes from Admin
@@ -28,5 +29,21 @@ class Admin(Users, db.Model):
         return False
      finally:
         db.session.close()
-
+    
+    def DeleteStudent(self,id):
+        try:
+            result = db.session.query(Student).filter_by(username=id)
+            std = result.first()
+            if std:
+               db.session.delete(std)
+               db.session.commit()
+               return True
+            return False
+        except Exception as e:
+           print('Exception : {e}')
+           return False
+        finally:
+           db.session.close()
+          
+       
 
