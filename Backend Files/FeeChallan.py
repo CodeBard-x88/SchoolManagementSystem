@@ -6,15 +6,13 @@ from database import create_app
 app,db = create_app()
 
 class FeeChallan(db.Model):
-    __tablename__ = 'fee_challans'
+    __tablename__ = 'fee_challan'
 
     id = db.Column(db.Integer, primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('students.id'), nullable=False)
     month = db.Column(db.String(20), nullable=False)
     fee = db.Column(db.Float, nullable=False)
     is_paid = db.Column(db.Boolean, default=False)
-
-    student = db.relationship('Student', backref='fee_challan', lazy=True)
 
     def __init__(self, student, month, fee):
         self.student = student

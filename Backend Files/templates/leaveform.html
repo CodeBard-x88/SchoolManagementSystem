@@ -7,27 +7,27 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylelogin.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/create.css') }}">
-   
+
     <title>Document</title>
 </head>
 
 <header>
     <nav class="navbar">
         <section class="container">
-        <div class="logo">
-            <h1>Student Dashboard</h1>
-        </div>
+            <div class="logo">
+                <h1>Student Dashboard</h1>
+            </div>
 
-        <ul>
-        <li class="item"><a href="">Courses</a></li>
-        <li class="item"><a href="viewmarks.html">     Marks</a></li>
-        <li class="item"><a href="viewattendance.html">Attendance</a></li>
-        <li class="item"><a href="feeconcession.html">Fee Concession</a></li>
-        <li class="item"><a href="">Fee Challan</a></li>
-        <li class="item"><a href="">Class behaviour</a></li>
-        <li class="item"><a href="">log out</a></li>
-        </ul>
-    </section>
+            <ul>
+                <li class="item"><a href="">Courses</a></li>
+                <li class="item"><a href="viewmarks.html">Marks</a></li>
+                <li class="item"><a href="viewattendance.html">Attendance</a></li>
+                <li class="item"><a href="feeconcession.html">Fee Concession</a></li>
+                <li class="item"><a href="">Fee Challan</a></li>
+                <li class="item"><a href="">Class behaviour</a></li>
+                <li class="item"><a href="">log out</a></li>
+            </ul>
+        </section>
     </nav>
 </header>
 
@@ -38,16 +38,21 @@
 
         <div class="card2">
             <h1>Leave Application Form</h1>
-            <form action="">
+            <form method="POST" action="{{ url_for('submit_leave') }}">
                 <div class="form-group">
                     <br>
-                   start Date : <input type="date" id="startDate" name="startDate" placeholder="Start Date" class="field" required><br>
+                    Start Date : <input type="date" id="startDate" name="startDate" placeholder="Start Date" class="field" required><br>
                     End Date : <input type="date" id="endDate" name="endDate" placeholder="End Date" class="field" required><br>
-                    Total Days : <input type="number" id="days" name="days" placeholder="Days" class="field" required min="1" max="7"><br><br>
+
+                    <!-- Replace "Total Days" with "Username" -->
+                    Username : <input type="text" id="username" name="username" placeholder="Username" class="field" required><br><br>
+                    Name : <input type="text" id="name" name="name" placeholder="Name" class="field" required><br><br>
+
+
                     Comments : <textarea id="comments" name="comments" placeholder="Comments" class="field"></textarea><br><br><br>
                     Select Leave Type : <select id="leaveType" name="leaveType" class="field">
                         <option value="sick">Sick Leave</option>
-                        <option value="vacation">urgent work</option>
+                        <option value="urgent">Urgent Work</option>
                         <option value="vacation">Vacation</option>
                         <option value="personal">Personal Leave</option>
                     </select><br>

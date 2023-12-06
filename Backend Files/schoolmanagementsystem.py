@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect
 from database import create_app
 from admin import Admin
 from student import Student
+from LeaveForm import LeaveForm
 app, db = create_app()
 
 class SchoolManagementSystem:
@@ -78,6 +79,30 @@ def callLogin():
                return render_template("stddash.html")
        return LoadLoginPage("Incorrect Credentials!")
 
+@app.route('/submit_leave', methods=['POST'])
+def submit_leave():
+    if request.method == 'POST':
+        start_date = request.form['startDate']
+        end_date = request.form['endDate']
+        username = request.form['username']
+        name = request.form['name']
+        comments = request.form['comments']
+        leave_type = request.form['leaveType']
+
+        new_leave_form = LeaveForm(
+            start_date=start_date,
+            end_date=end_date,
+            username=username,
+            name=name,
+            comments=comments,
+            leave_type=leave_type
+        )
+
+        db.session.add(new_leave_form)
+        db.session.commit()
+
+        return redirect(url_for('index'))    #will redirect it later on to required page
+
 @app.route('/admin_logout',methods=['GET','POST'])
 def callLogout():
      sms.adminLogout()
@@ -90,6 +115,10 @@ def LoadStudentForm(message=None):
 @app.route('/TeacherForm')
 def LoadTeacherForm(message=None):
     return render_template('teacherForm.html',UI_message=message)
+
+@app.route('/leaveform')
+def leave_form():
+    return render_template('leaveform.html')
 
 @app.route('/add_studnet', methods=['GET', 'POST'])
 def add_Student():
