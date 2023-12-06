@@ -35,6 +35,20 @@ class SchoolManagementSystem:
             except Exception as e:
                 print(f"Exception: {e}")
                 return False
+    
+    def AddStudent(self,request_):
+        name = request_.form['name']
+        username = request_.form['username']
+        password = request_.form['pssword']
+        email = request_.form['email']
+        phone =request_.form['phone']
+        class_ = request_.form['class_']
+        gender = request_.form['gender']
+        parent_id = request_.form['parendID']
+        address = request_.__form['address']
+        parent_phone = request_.form['parentphone']
+        return self.admin_.AddStudent(name,username,password,email,phone,class_,gender,parent_id,address,parent_phone)
+
 
     def adminLogout(self):
          self.admin_=None
@@ -64,12 +78,31 @@ def callLogin():
                return render_template("stddash.html")
        return LoadLoginPage("Incorrect Credentials!")
 
-
 @app.route('/admin_logout',methods=['GET','POST'])
 def callLogout():
      sms.adminLogout()
      return LoadLoginPage("Logged Out!")
-()
+
+@app.route('/StudentForm')
+def LoadStudentForm(message=None):
+    return render_template('studentform.html',UI_message=message)
+
+@app.route('/TeacherForm')
+def LoadTeacherForm(message=None):
+    return render_template('teacherForm.html',UI_message=message)
+
+@app.route('/add_studnet', methods=['GET', 'POST'])
+def add_Student():
+    if request.method == 'POST':
+        if sms.AddStudent(request):
+            return LoadStudentForm("Student Added Successfully.")
+        else:
+            return LoadStudentForm("Student can't be added")
+    else:
+        # Handle GET request or other methods if needed
+        return LoadStudentForm("Invalid request method")
+
+     
 
 if __name__ == "__main__":
     app.run(debug=True)

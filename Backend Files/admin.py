@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from database import create_app
 from Users import Users
-from sqlalchemy import text
+from student import Student
 
 app, db= create_app()
 
@@ -22,4 +22,16 @@ class Admin(Users, db.Model):
     def __init__(self, name=None, username=None, password=None, email=None, contact_number=None):
         super().__init__(name, username, password, email, contact_number)
 
+    def AddStudent(self, name, username, password, email, phone, class_, gender, parent_id, address, parent_phone):
+     try:
+        std = Student(name, username, password, email, phone, class_, gender, parent_id, address, parent_phone)
+        db.session.add(std)
+        db.session.commit()
+        return True 
+     except Exception as e:
+        print(f"Error during commit: {e}")
+        db.session.rollback()  
+        return False  
+     finally:
+        db.session.close()
 
