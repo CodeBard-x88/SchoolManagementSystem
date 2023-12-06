@@ -3,30 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SMS </title>
+    <title>SMS</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e5e9f6;
+        }
+
+        .navbar {
+            background-color: #3d72ff;
+            color: #e5e9f6;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+        }
+
+        .logo h1 {
+            margin: 0;
+            color: #e5e9f6;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover h1 {
+            color: black;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-options {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .option-box {
+            width: 200px;
+            height: 200px;
+            background-color: #5584ff;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .option-box a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .option-box:hover {
+            background-color: #365faa;
+        }
+
+        .logout-box {
+            padding: 15px;
+            background-color: #5584ff;
+            color: #ffffff;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-box a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logout-box:hover {
+            background-color: #365faa;
+        }
+    </style>
 </head>
 <body>
-  
-    <nav class="navbar">
+    <div class="navbar">
         <section class="container">
-        <div class="logo">
-            <h1>Administrative Dashboard</h1>
-        </div>
+            <div class="logo">
+                <h1>Administrative Dashboard</h1>
+            </div>
 
-        <ul>
-        <li class="item"><a href="teacher.html"> Register Teacher</a></li>
-        <li class="item"><a href="create.html">Register Student</a></li>
-        <li class="item"><a href="home.html">Register Parent</a></li>
-        <li class="item"><a href="login.html">Delete teacher </a></li>
-        <li class="item"><a href="login.html">Delete Student </a></li>
-        <li class="item"><a href="login.html">Delete Parent </a></li>
-        <li class="item"><a href="login.html">Manages Fee</a></li>
-        <li class="item"><a href="/admin_logout">Logout</a></li>
-        </ul>
-    </section>
-    </nav>
-  
+            <div class="logout-box">
+                <a href="/admin_logout">Logout</a>
+            </div>
+        </section>
+    </div>
+
+    <div class="menu-options">
+        <div class="option-box"><a href="teacher.html">Register Teacher</a></div>
+        <div class="option-box"><a href="create.html">Register Student</a></div>
+        <div class="option-box"><a href="home.html">Register Parent</a></div>
+        <div class="option-box"><a href="login.html">Delete Teacher</a></div>
+        <div class="option-box"><a href="login.html">Delete Student</a></div>
+        <div class="option-box"><a href="login.html">Delete Parent</a></div>
+        <div class="option-box"><a href="login.html">Manage Fee</a></div>
+    </div>
 
 </body>
 </html>
