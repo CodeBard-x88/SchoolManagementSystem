@@ -1,38 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SMS </title>
-    <link rel="stylesheet" href="admin.css">
-</head>
-<body>
-  
-    <nav class="navbar">
-    <section class="container">
-        <div class="logo">
-            <h1>Teacher Dashboard</h1>
-        </div>
+    <title>SMS</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e5e9f6;
+        }
 
-        <ul>
-        <li class="item"><a href="">Marks</a></li>
-        <li class="item"><a href=""> Attendance</a></li>
-        <li class="item"><a href="">track attitude</a></li>
-        </ul>
-    </section>
-    </nav>
-    <section class="container11">
-        <div class="profile-section">
-            <h2 class="back_profile">Teacher Information</h2>
-            <div class="profile-info">
-                <p><strong>Name:</strong> {{ name }}</p>
-                <p><strong>CNIC:</strong> {{ cnic }}</p>
-                <p><strong>Gender:</strong> {{ gender }}</p>
-                <p><strong>Phone No:</strong> {{ phno }}</p>
-                <p><strong>Class Taught:</strong> {{ student_class }}</p>
+        .navbar {
+            background-color: #3d72ff;
+            color: #e5e9f6;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+        }
+
+        .logo h1 {
+            margin: 0;
+            color: #e5e9f6;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover h1 {
+            color: black;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-options {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .option-box {
+            width: 200px;
+            height: 200px;
+            background-color: #5584ff;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .option-box a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .option-box:hover {
+            background-color: #365faa;
+        }
+
+        .logout-box {
+            padding: 15px;
+            background-color: #5584ff;
+            color: #ffffff;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-box a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logout-box:hover {
+            background-color: #365faa;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <section class="container">
+            <div class="logo">
+                <h1>Teacher Dashboard</h1>
             </div>
-        </div>
-    </section>
+
+            <div class="logout-box">
+                <a href="">Logout</a>
+            </div>
+        </section>
+    </div>
+
+    <div class="menu-options">
+        <div class="option-box"><a href="uploadmarks.html">Upload Marks</a></div>
+        <div class="option-box"><a href="uploadattendance.html">Upload Attendance</a></div>
+        <div class="option-box"><a href="">Track Attitude</a></div>
+
+
+    </div>
 
 </body>
+
 </html>
