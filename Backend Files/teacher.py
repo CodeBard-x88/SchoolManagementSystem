@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import text
+from sqlalchemy import text, Column, Integer, String, PrimaryKeyConstraint
 from Users import Users
 from database import create_app
 

@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, url_for, redirect
 from database import create_app
 from admin import Admin
 from student import Student
+# from teacher import Teacher
+# from parent import Parent
+
 app, db = create_app()
 
 class SchoolManagementSystem:
@@ -36,6 +39,28 @@ class SchoolManagementSystem:
                 print(f"Exception: {e}")
                 return False
     
+    # def teacherLogin(self,user,password_): 
+            
+    #         try:
+    #             print('creating teacher object')
+    #             temp = Teacher(username=user, password=password_)
+    #             boolean, teacher_ = temp.Login()        #here the teacher_ will be initialized and will perform the operations along this object
+    #             return boolean
+    #         except Exception as e:
+    #             print(f"Exception: {e}")
+    #             return False
+            
+    # def parentLogin(self,user,password_): 
+            
+    #         try:
+    #             print('creating parent object')
+    #             temp = Parent(username=user, password=password_)
+    #             boolean, parent_ = temp.Login()        #here the parent_ will be initialized and will perform the operations along this object
+    #             return boolean
+    #         except Exception as e:
+    #             print(f"Exception: {e}")
+    #             return False
+
     def AddStudent(self,request_):
         name = request_.form['name']
         username = request_.form['username']
@@ -68,14 +93,18 @@ def callLogin():
        password = request.form['password']
        if(user_type=='admin'):
            if (sms.adminLogin(username, password)==True):
-               return render_template("admin.html")         #if login is successful, dashboard is opened
+               return render_template("admin.html")         #if login is successful, admin dashboard is opened
        elif(user_type=='parent'):
-             pass
+            # if (sms.parentLogin(username, password)==True):
+            #    return render_template("parentdash.html")       #if login is successful, parent dashboard is opened
+            pass
        elif(user_type=='teacher'):
-             pass
+            # if (sms.teacherLogin(username, password)==True):
+            #    return render_template("teadash.html")       #if login is successful, teacher dashboard is opened
+            pass
        else:
             if (sms.StudentLogin(username, password)==True):
-               return render_template("stddash.html")
+               return render_template("stddash.html")       #if login is successful, student dashboard is opened
        return LoadLoginPage("Incorrect Credentials!")
 
 @app.route('/admin_logout',methods=['GET','POST'])
@@ -106,5 +135,4 @@ def add_Student():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
 
