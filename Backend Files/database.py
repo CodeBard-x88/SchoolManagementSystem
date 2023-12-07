@@ -10,7 +10,7 @@ def create_app():
 
     app=Flask(__name__)
     #app.config['SQLALCHEMY_DATABASE_URI']='postgresql://avnadmin:AVNS_kayd37s41kGGRqSThn8@sms-school-management-system.a.aivencloud.com:10884/sms?sslmode=require'
-    app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:password@localhost/sms'
+    app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:123456@localhost/SMS'
     db.init_app(app)
     return app,db
 
