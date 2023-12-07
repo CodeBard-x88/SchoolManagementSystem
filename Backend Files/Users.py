@@ -5,41 +5,44 @@ from database import create_app
 
 app,db = create_app()
 
-class Users():
+class Users(db.Model):
+    __abstract__ = True
 
-    def __init__(self,name,username,password,email,phone):
-        self.name_ = name
-        self.user_name = username
-        self.user_password = password
-        self.user_email = email
-        self.phone_num = phone
+    name = db.Column(db.String(255))
+    username = db.Column(db.String(50), primary_key=True, nullable=False, unique=True)
+    password = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=True)
+    phone = db.Column(db.String(15), nullable=True)
+
+    def __init__(self, name=None, username=None, password=None, email=None, phone=None):
+        self.name = name
+        self.username = username
+        self.password = password
+        self.email = email
+        self.phone = phone
 
     def Login(self):
         try:
-
-            if not db.session.is_active:        #In Case if database session is active or localhost is not working
-                print("Database connection is not active.")
-                return False
-            
-            #generating SQL query
-            
-            query = db.session.query(self.__class__).filter(self.__class__.username==self.user_name, self.__class__.password==self.user_password)
-            print(str(query))
-            found = query.first()  #executes the generated sql query
-            db.session.close()
+            query = db.session.query(self.__class__).filter(
+                self.__class__.username == self.username,
+                self.__class__.password == self.password
+            )
+            found = query.first()
         except Exception as e:
             print(f"Exception caught: {e}")
-            found = None  # Set found to None in case of an exception
-
+            found = None
         finally:
-            if found:
-                print('Admin found')
-                return True, found
-            else:
-                print('Admin not found')
-        return False
-    
+            db.session.close()
+
+        if found:
+            print(f'{self.__class__.__name__} found')
+            return True, found
+        else:
+            print(f'{self.__class__.__name__} not found')
+            return False
+
     def Logout(self):
         pass
+
     
 
