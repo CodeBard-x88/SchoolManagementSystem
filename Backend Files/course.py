@@ -10,6 +10,7 @@ class Course(db.Model):
 
     course_code = db.Column(db.String(50), primary_key=True, nullable=False, unique=True)
     course_name = db.Column(db.String(50),primary_key=True,nullable=False)
+    course_class = db.Column(db.Integer)
     course_fee = db.Column(db.Integer)
 
     def __init__(self,code=None,name=None,fee=None):

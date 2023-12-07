@@ -13,7 +13,5 @@ class Teacher(Users, db.Model):
     qualifications = db.Column(db.String(50),nullable=False)
     teacher_class = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, name=None, username=None, password=None, email=None, phone=None):
+    def __init__(self, name=None, username=None, password=None, email=None, phone=None, qualification=None,teacherclass=None):
         super().__init__(name, username, password, email, phone)
-
-
