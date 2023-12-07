@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylelogin.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/create.css') }}">
+   
+    <title>Document</title>
+</head>
+
+<header>
+    <nav class="navbar">
+        <section class="container">
+            <div class="logo"> <href="teadash.html"></a>
+                <h1>Teacher Dashboard</h1>
+            </div>
+    
+            <ul>
+            <li class="item"><a href="/add_marks">Marks</a></li>
+            <li class="item"><a href="/add_attendance"> Attendance</a></li>
+            <li class="item"><a href="/add_attitude">track attitude</a></li>
+            </ul>
+    
+            <div class="logout-box">
+                <a href="/admin_logout">Logout</a>
+            </div>
+    
+        </section>
+        </nav>
+</header>
+
+<body>
+
+    <div>
+        <div class="bg_ball_1"></div>
+
+        <div class="card2">
+            <h1>Class Attitude Form</h1>
+            <form action="">
+                <div class="form-group">
+                    <br>
+                    Date : <input type="date" id="startDate" name="startDate" placeholder="Start Date" class="field" required><br>
+                    Performance : <textarea id="comments" name="comments" placeholder="Comments" class="field"></textarea><br><br><br>
+                    Improvement Required : <select id="leaveType" name="leaveType" class="field">
+                        <option value="sick">Punctuality</option>
+                        <option value="vacation">Homework Submission</option>
+                        <option value="vacation">Academics</option>
+                        <option value="personal">Personal Hygene</option>
+                        <option value="personal">Behaviour</option>
+                    </select><br>
+                    <button class="btn" id="btn1">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

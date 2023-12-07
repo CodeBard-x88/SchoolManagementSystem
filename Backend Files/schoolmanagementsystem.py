@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect, session
 from database import create_app
 from admin import Admin
 from student import Student
-#from teacher import Teacher
+from teacher import Teacher
 from LeaveForm import LeaveForm
 from parent import Parent
 
@@ -46,6 +46,19 @@ class SchoolManagementSystem:
             except Exception as e:
                 print(f"Exception: {e}")
                 return False
+    
+    
+    def teacherLogin(self,user,password_):
+            try:
+                print('creating teacher object')
+                temp = Teacher(username=user, password=password_)
+                boolean, teacher_ =temp.Login()
+                return boolean
+            except Exception as e:
+                print(f"Exception: {e}")
+                return False
+            
+            
 
     def AddStudent(self,request_):
         name = request_.form['name']
