@@ -4,10 +4,15 @@ from admin import Admin
 from student import Student
 from teacher import Teacher
 from LeaveForm import LeaveForm
+from attitudeform import attitudeform
 from parent import Parent
+import random
+
 
 app, db = create_app()
 app.secret_key = 'your_secret_key'
+
+
 
 class SchoolManagementSystem:
     
@@ -40,6 +45,7 @@ class SchoolManagementSystem:
                     session['student'] = {
                     'username': studnet_.username,
                     'name': studnet_.name,
+                    # Add other relevant information
                 }        #here the student_ will be initialized and will perform the operations along this object
                 return boolean
             except Exception as e:
@@ -52,6 +58,14 @@ class SchoolManagementSystem:
                 print('creating teacher object')
                 temp = Teacher(username=user, password=password_)
                 boolean, teacher_ =temp.Login()
+                if boolean:
+                    session['teacher'] = {
+                    'username': teacher_.username,
+                    'name': teacher_.name,
+                    'teacher_class': teacher_.teacher_class
+                    # Add other relevant information
+                }
+                
                 return boolean
             except Exception as e:
                 print(f"Exception: {e}")
@@ -83,13 +97,6 @@ class SchoolManagementSystem:
     def StudentLogout(self):
         self.student_=None
 
-    def AddCourse(self,request_):
-        code = request_.form['coursecode']
-        name = request_.form['coursename']
-        class_ = request_.form['courseclass']
-        fee = request_.form['coursefee']
-        return self.admin_.AddNewCourse(code,name,class_,fee)
-    
 sms = SchoolManagementSystem()  
 
 @app.route('/')
@@ -180,17 +187,48 @@ def add_Student():
     else:
         # Handle GET request or other methods if needed
         return LoadStudentForm("Invalid request method")
+    
+@app.route('/add_attitude',methods=['GET','POST'])
+def addattitude():
+      print('adding attitude')
+      return render_template('classATT.html')
+  
 
-@app.route('/render_addcourse')
-def LoadAddStudent(message=None):
-    return render_template('addcourse.html',UI_message=message)
+@app.route('/submit_attitude', methods=['POST'])
+def submit_attitude():
+    if request.method == 'POST':
+        
+        date_att = request.form['Date']
+        description = request.form['comments']
+       
+        new_attitude_form = attitudeform(
+            form_id= 4,
+            teacher_username=session['teacher']['username'],
+            class_number=session['teacher']['teacher_class'],
+            description=description,
+            date_att =date_att,
+        )
 
-@app.route('/addcourse',methods=['GET','POST'])
-def addnewCourse():
-    if request.method=='POST':
-        msg = sms.AddCourse(request)
-        return LoadAddStudent(msg)
+        db.session.add(new_attitude_form)
+        db.session.commit()
+        db.session.close()
 
+        return render_template('teadash.html')
+
+   
+
+  
+@app.route('/add_attendance',methods=['GET','POST'])
+def addattendance():
+      print('adding attendance')
+      students = Student.query.all()
+      return render_template('uploadattendance.html', students=students)
+  
+@app.route('/add_marks',methods=['GET','POST'])
+def addmarks():
+    print('adding marks')
+    students = Student.query.all()
+    return render_template('viewmarks.html', students=students)
 
 @app.route('/deleteStudent',methods=['GET','POST'])
 def delete_Student():
@@ -211,3 +249,5 @@ def LoadAdminDash():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+    
