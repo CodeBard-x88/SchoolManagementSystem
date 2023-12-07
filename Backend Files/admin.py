@@ -29,7 +29,8 @@ class Admin(Users, db.Model):
         #db.session.commit()
 
         #creating account for parents with the parent_id provided by student form
-        std_parent = Parent(std.parent_name,std.parent_ID,GetaPassword(),std.parent_email,std.parent_contact)
+        p_password = GetaPassword()
+        std_parent = Parent(std.parent_name,std.parent_ID,p_password,std.parent_email,std.parent_contact)
         db.session.add(std_parent)
         db.session.commit()
         return True , "Student added Successfully!"
