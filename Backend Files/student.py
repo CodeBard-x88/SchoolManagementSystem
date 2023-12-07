@@ -7,27 +7,28 @@ from database import create_app
 
 app,db = create_app()
 
-class Student(Users):
-    __tablename__ = 'student'
+class Student(Users, db.Model):
+    _tablename_ = 'student'
 
+    sno = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.String(255))
+    username = db.Column(db.String(50), primary_key=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=True)
+    contact_number = db.Column(db.String(15), nullable=True)
     enrolled_class = db.Column(db.Integer, nullable=False)
-    Gender = db.Column(db.String(255), nullable=False)
-    parent_ID = db.Column(db.String(15), nullable=False)
-    address = db.Column(db.String(255), nullable=False)
-    parent_contact = db.Column(db.String(50), nullable=False)
-    parent_name = db.Column(db.String(50), nullable=False)
-    parent_email = db.Column(db.String(255), nullable=False)
+    Gender = db.Column(db.String(255),nullable=False)
+    parent_ID = db.Column(db.String(15),nullable=False)
+    address = db.Column(db.String(255),nullable=False)
+    parent_contact=db.Column(db.String(50), nullable= False)
 
-    def __init__(self, name=None, username=None, password=None, email=None, phone=None,
-                 enrolled_class=None, Gender=None, parent_ID=None, address=None, parent_contact=None,pname=None,pemail=None):
-        super().__init__(name, username, password, email, phone)
-        self.enrolled_class = enrolled_class
-        self.Gender = Gender
-        self.parent_ID = parent_ID
-        self.address = address
-        self.parent_contact = parent_contact
-        self.parent_email=pemail
-        self.parent_name=pname
+    def __init__(self, name=None, username=None, password=None, email=None, contact_number=None, enrolled_class = None, Gender = None, parent_ID = None, address=None, parent_contact=None):
+        super().__init__(name, username, password, email, contact_number)
+        self.enrolled_class=enrolled_class
+        self.Gender=Gender
+        self.parent_ID=parent_ID
+        self.address=address
+        self.parent_contact=parent_contact
  
     def setName(self, name):
         self.name = name
