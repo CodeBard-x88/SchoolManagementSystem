@@ -40,7 +40,6 @@ class SchoolManagementSystem:
                     session['student'] = {
                     'username': studnet_.username,
                     'name': studnet_.name,
-                    # Add other relevant information
                 }        #here the student_ will be initialized and will perform the operations along this object
                 return boolean
             except Exception as e:
@@ -84,6 +83,13 @@ class SchoolManagementSystem:
     def StudentLogout(self):
         self.student_=None
 
+    def AddCourse(self,request_):
+        code = request_.form['coursecode']
+        name = request_.form['coursename']
+        class_ = request_.form['courseclass']
+        fee = request_.form['coursefee']
+        return self.admin_.AddNewCourse(code,name,class_,fee)
+    
 sms = SchoolManagementSystem()  
 
 @app.route('/')
@@ -174,6 +180,17 @@ def add_Student():
     else:
         # Handle GET request or other methods if needed
         return LoadStudentForm("Invalid request method")
+
+@app.route('/render_addcourse')
+def LoadAddStudent(message=None):
+    return render_template('addcourse.html',UI_message=message)
+
+@app.route('/addcourse',methods=['GET','POST'])
+def addnewCourse():
+    if request.method=='POST':
+        msg = sms.AddCourse(request)
+        return LoadAddStudent(msg)
+
 
 @app.route('/deleteStudent',methods=['GET','POST'])
 def delete_Student():

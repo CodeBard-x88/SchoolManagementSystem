@@ -4,6 +4,7 @@ from database import create_app
 from Users import Users
 from student import Student
 from parent import Parent
+from course import Course
 from passwordGenerator import GetaPassword
 
 app, db= create_app()
@@ -13,7 +14,6 @@ class Admin(Users, db.Model):
     Defining the table structure in the database
     """
     __tablename__ = 'admin'
-    #contact_number = db.Column(db.String(15), nullable=True)
 
     def __init__(self, name=None, username=None, password=None, email=None, contactnumber=None):
         super().__init__(name, username, password, email, phone=contactnumber)
@@ -59,6 +59,10 @@ class Admin(Users, db.Model):
            return False
         finally:
            db.session.close()
-          
+
+    def AddNewCourse(self,code,name,class_,fee):
+       course = Course(code,name,class_,fee)
+       return course.AddCoursetodb()
+        
        
 

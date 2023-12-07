@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet type" type="text/css" href="{{url_for('static',filename='css/admin.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/create.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylelogin.css') }}">
+
+    <title>Add new Course</title>
+</head>
+
+<header>
+    <nav class="navbar">
+        <section class="container">
+        <div class="logo">
+            <h1>Administrative Dashboard</h1>
+        </div>
+
+        <ul>
+        <li class="item"><a href="/render_admindash">Home</a></li>
+        <li class="item"><a href="teacher.html">Register Teacher</a></li>
+        <li class="item"><a href="teacher.html">Delete Teacher</a></li>
+        <li class="item"><a href="/render_delstd">Delete Student </a></li>
+        <li class="item"><a href="login.html">Add Courses</a></li>
+        <li class="item"><a href="login.html">Manages Fee</a></li>
+        <li class="item"><a href="/admin_logout">log out</a></li>
+        </ul>
+    </section>
+    </nav>
+      
+</header>
+
+<body>
+
+    <div>
+        <div class="bg_ball_1"></div>
+
+        <div class="card2">
+            <h1>Add New Course</h1>
+            <form action="{{ url_for('addnewCourse') }}" method="POST">
+                <div class="form-group">
+                    <input type="text" id="coursecode" name="coursecode" placeholder="Course Code" class="field" required>
+                    <br><input type="text" id="coursename" name="coursename" placeholder="Course Name" class="field" required>
+                    <br>
+                    <label for="class_">Course Class:</label>
+                    <select id="courseclass" name="courseclass" class="field" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>                    
+                    <br><br>
+                    <input type="number" id="coursefee" name="coursefee" placeholder="Fee" class="field" required>
+        
+                    <div id="messageBox" class="message-box">
+                        {% if UI_message %}
+                            <p style="color: rgb(97, 70, 70); text-align: center;">{{ UI_message }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+
+     
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
