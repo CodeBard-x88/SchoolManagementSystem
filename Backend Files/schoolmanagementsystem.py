@@ -13,11 +13,13 @@ class SchoolManagementSystem:
     
     admin_ = None
     student_= None
+    parent_= None
     name = None
     def __init__(self):
         self.name = "School Management System"
         self.admin_ = Admin()
         self.student_=Student()
+        self.parent_=Parent()
 
     def adminLogin(self,user,password_): 
             
@@ -41,6 +43,22 @@ class SchoolManagementSystem:
                     'username': studnet_.username,
                     'name': studnet_.name,
                 }        #here the student_ will be initialized and will perform the operations along this object
+                return boolean
+            except Exception as e:
+                print(f"Exception: {e}")
+                return False
+            
+    def parentLogin(self,user,password_): 
+            
+            try:
+                print('creating parent object')
+                temp = Parent(username=user, password=password_)
+                boolean, parent_ = temp.Login()
+                if boolean:
+                    session['parent'] = {
+                    'username': parent_.username,
+                    'name': parent_.name,
+                }        #here the parent_ will be initialized and will perform the operations along this object
                 return boolean
             except Exception as e:
                 print(f"Exception: {e}")
