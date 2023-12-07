@@ -26,8 +26,7 @@ class Admin(Users, db.Model):
            return False, "Username already exists!"
         std = Student(name=name, username=username, password=password, email=email, phone=phone, enrolled_class=class_, Gender=gender, parent_ID=parent_id, address=address, parent_contact=parent_phone,pname=p_name,pemail=p_email)
         db.session.add(std)
-        #db.session.commit()
-
+        
         #creating account for parents with the parent_id provided by student form
         p_password = GetaPassword()
         std_parent = Parent(std.parent_name,std.parent_ID,p_password,std.parent_email,std.parent_contact)
@@ -47,6 +46,11 @@ class Admin(Users, db.Model):
             std = result.first()
             if std:
                db.session.delete(std)
+               query1 = db.session.query(Parent).filter_by(username=std.parent_ID)
+               std_parent = query1.first()
+               if std_parent:
+                  db.session.delete(std_parent)
+               
                db.session.commit()
                return True
             return False

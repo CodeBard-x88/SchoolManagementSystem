@@ -86,15 +86,13 @@ def callLogin():
        password = request.form['password']
        if(user_type=='admin'):
            if (sms.adminLogin(username, password)==True):
-               return render_template("admin.html")         #if login is successful, admin dashboard is opened
+                return render_template("admin.html")         #if login is successful, admin dashboard is opened
        elif(user_type=='parent'):
-            # if (sms.parentLogin(username, password)==True):
-            #    return render_template("parentdash.html")       #if login is successful, parent dashboard is opened
-            pass
+             if (sms.parentLogin(username, password)==True):
+                return render_template("parentdash.html")       #if login is successful, parent dashboard is opened
        elif(user_type=='teacher'):
-            # if (sms.teacherLogin(username, password)==True):
-            #    return render_template("teadash.html")       #if login is successful, teacher dashboard is opened
-            pass
+            if (sms.teacherLogin(username, password)==True):
+               return render_template("teadash.html")       #if login is successful, teacher dashboard is opened
        else:
             if (sms.StudentLogin(username, password)==True):
                return render_template("stddash.html")       #if login is successful, student dashboard is opened
