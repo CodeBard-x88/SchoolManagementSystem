@@ -4,7 +4,6 @@ from database import create_app
 from Users import Users
 from student import Student
 from parent import Parent
-from course import Course
 from passwordGenerator import GetaPassword
 
 app, db= create_app()
@@ -14,6 +13,7 @@ class Admin(Users, db.Model):
     Defining the table structure in the database
     """
     __tablename__ = 'admin'
+    #contact_number = db.Column(db.String(15), nullable=True)
 
     def __init__(self, name=None, username=None, password=None, email=None, contactnumber=None):
         super().__init__(name, username, password, email, phone=contactnumber)
@@ -59,10 +59,42 @@ class Admin(Users, db.Model):
            return False
         finally:
            db.session.close()
+          
 
-    def AddNewCourse(self,code,name,class_,fee):
-       course = Course(code,name,class_,fee)
-       return course.AddCoursetodb()
-        
+    def AddTeacher(self, name, username, password, email, phone, qualification, teacherclass):
+         try:
+               query = db.session.query(Teacher).filter(Teacher.username==username)
+               found = query.first()
+               if found:
+                return False, "Username already exists!"
+               teacher = Teacher(name=name, username=username, password=password, email=email, phone=phone, qualifications=qualification, teacher_class=teacherclass)
+               db.session.add(teacher)
+               db.session.commit()
+               return True , "Teacher added Successfully!"
+         except Exception as e:
+               print(f"Error during commit: {e}")
+               db.session.rollback()
+               return False , "Unable to add Teacher!"
+         finally:
+               db.session.close()
+
+
+    def DeleteTeacher(self,id):
+        try:
+            result = db.session.query(Teacher).filter_by(username=id)
+            teacher = result.first()
+            if teacher:
+               db.session.delete(teacher)
+               db.session.commit()
+               return True
+            return False
+        except Exception as e:
+           print('Exception : {e}')
+           return False
+        finally:
+           db.session.close()
        
-
+       
+       
+       
+       
