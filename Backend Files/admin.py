@@ -26,12 +26,17 @@ class Admin(Users, db.Model):
            return False, "Username already exists!"
         std = Student(name=name, username=username, password=password, email=email, phone=phone, enrolled_class=class_, Gender=gender, parent_ID=parent_id, address=address, parent_contact=parent_phone,pname=p_name,pemail=p_email)
         db.session.add(std)
-        
+       
         #creating account for parents with the parent_id provided by student form
-        p_password = GetaPassword()
-        std_parent = Parent(std.parent_name,std.parent_ID,p_password,std.parent_email,std.parent_contact)
-        db.session.add(std_parent)
+        query1= db.session.query(Parent).filter_by(username=parent_id)
+        result =query1.first()
+        if not result:
+            p_password = GetaPassword()
+            std_parent = Parent(std.parent_name,std.parent_ID,p_password,std.parent_email,std.parent_contact)
+            db.session.add(std_parent)
+         
         db.session.commit()
+
         return True , "Student added Successfully!"
      except Exception as e:
         print(f"Error during commit: {e}")

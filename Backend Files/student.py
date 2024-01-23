@@ -5,6 +5,7 @@ from Users import Users
 from database import create_app
 from passwordGenerator import GetaPassword
 from parent import Parent
+from LeaveForm import LeaveForm
 #from FeeChallan import FeeChallan
 
 app,db = create_app()
@@ -31,4 +32,40 @@ class Student(Users):
         self.parent_email=pemail
         self.parent_name=pname
 
- 
+    
+    @classmethod
+    def ViewStudents(cls):
+        students = cls.query.all()
+        headings = ['Name', 'Username', 'email', 'phone','Enrolled Class', 'Gender','Parent Id','Address','Parent Contact','Parent Name','Parent Email']  # Adjust these based on your actual column names
+
+        # Format the data in a list of lists
+        data = [[student.name, 
+                 student.username, 
+                 student.email, 
+                 student.phone,
+                 student.enrolled_class,
+                 student.Gender,
+                 student.parent_ID,
+                 student.address,
+                 student.parent_contact,
+                 student.parent_name,
+                 student.parent_email
+                 ] for student in students]
+
+        return headings, data
+
+    def submit_leave_form(self, start_date, end_date, description, leave_type, username1, name1):
+                new_leave_form = LeaveForm(
+                    start_date=start_date,
+                    end_date=end_date,
+                    username=username1,
+                    name=name1,
+                    description=description,
+                    leave_type=leave_type
+                )
+
+                db.session.add(new_leave_form)
+                db.session.commit()
+                db.session.close()
+
+                return render_template('stddash.html')

@@ -8,10 +8,10 @@ app,db = create_app()
 class Users(db.Model):
     __abstract__ = True
 
-    name = db.Column(db.String(255))
+    name = db.Column(db.String(50))
     username = db.Column(db.String(50), primary_key=True, nullable=False, unique=True)
-    password = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), nullable=True)
+    password = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(50), nullable=True)
     phone = db.Column(db.String(15), nullable=True)
 
     def __init__(self, name=None, username=None, password=None, email=None, phone=None):

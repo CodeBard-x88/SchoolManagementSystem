@@ -38,21 +38,32 @@
 
         <div class="card2">
             <h1>Create Teacher Account</h1>
-            <form action="">
+            <form id="teacherform" action="">
                     <input type="text" id="name" name="name" placeholder="Full Name" class="field" required>
                     <input type="text" id="uname" name="username" placeholder="Username" class="field" required>
                     <input type="number" id="Cnic" name="tCnic" placeholder="CNIC" class="field" required>
                     <input type="number" id="age" name="age" placeholder="Age" class="field" required min="4" max="18"><br>
-                    <label for="gender">Gender:</label>
-                    <select id="gender" name="gender" class="field" required>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select><br><br>
                     <input type="number" id="phone" name="phone" placeholder="Phone" class="field" required>
-                    <input type="text" id="city" name="city" placeholder="City" class="field" required>
+                    <input type="email" id="email" name="email" placeholder="email" class="field" required>
                     <input type="password" id="pass" name="password" placeholder="Password" class="field" required>
-                
+                    <label for="class_">Select Class</Select></label>
+                    <select id="class_" name="class_" class="field" required>
+                        <option value="1">Class 1</option>
+                        <option value="2">Class 2</option> 
+                        <option value="3">Class 3</option>
+                        <option value="4">Class 4</option>
+                        <option value="5">Class 5</option>
+                        <option value="6">Class 6</option>                    
+                        <option value="7">Class 7</option>
+                        <option value="8">Class 8</option>
+                        <option value="9">Class 9</option>
+                        <option value="10">Class 10</option>
+                    </select><br><br>
+                    
+                    <label for="courseSelect">Select Courses:</label>
+    <select id="courseSelect" name="selected_courses" multiple>
+        <!-- Courses will be dynamically populated here using JavaScript -->
+    </select>
                     <button class="btn btn1">Create Account</button>
                     
             </form>
@@ -61,6 +72,30 @@
         
         
     </section>
+
+    <script>
+        $(document).ready(function() {
+            $('#class_').change(function() {  // Corrected the id to match your HTML
+                var selectedClass = $(this).val();
+        
+                // Make an AJAX request to get courses based on the selected class
+                $.ajax({
+                    url: '/select_courses',
+                    type: 'POST',
+                    data: {selected_class: selectedClass},
+                    success: function(response) {
+                        // Update the course dropdown menu
+                        $('#courseSelect').empty();
+                        $.each(response.courses, function(index, course) {
+                            $('#courseSelect').append('<option value="' + course.code + '">' + course.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    
+    
 
 </body>
 

@@ -39,18 +39,12 @@
 
         <div class="card2">
             <h1>Class Attitude Form</h1>
-            <form action="">
-                <div class="form-group">
+            <form >
+                <div class="form-group" method="POST" action="{{ url_for('submit_attitude') }}">
                     <br>
-                    Date : <input type="date" id="startDate" name="startDate" placeholder="Start Date" class="field" required><br>
-                    Performance : <textarea id="comments" name="comments" placeholder="Comments" class="field"></textarea><br><br><br>
-                    Improvement Required : <select id="leaveType" name="leaveType" class="field">
-                        <option value="sick">Punctuality</option>
-                        <option value="vacation">Homework Submission</option>
-                        <option value="vacation">Academics</option>
-                        <option value="personal">Personal Hygene</option>
-                        <option value="personal">Behaviour</option>
-                    </select><br>
+                    Date : <input type="date" id="Date" name="Date" placeholder="Date" class="field" required><br>
+                    Performance : <textarea id="comments" name="comments" placeholder="comments" class="field"></textarea><br><br><br>
+                    <br>
                     <button class="btn" id="btn1">Submit</button>
                 </div>
             </form>

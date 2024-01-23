@@ -35,3 +35,14 @@ class Course(db.Model):
             db.session.close()
 
     
+    @classmethod
+    def ViewCourses(cls):
+        courses = cls.query.all()
+        headings = ['Course Code', 'Course Name', 'Class', 'Fee']  # Adjust these based on your actual column names
+
+        # Format the data in a list of lists
+        data = [[course.course_code, course.course_name, course.course_class, course.course_fee] for course in courses]
+
+        return headings, data
+
+    

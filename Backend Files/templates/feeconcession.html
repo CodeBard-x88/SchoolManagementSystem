@@ -19,10 +19,10 @@
             </div>
 
             <ul>
-                <li class="item"><a href="">Courses</a></li>
-                <li class="item"><a href="viewattendance.html">Marks</a></li>
+                <li class="item"><a href="/view_courses">Courses</a></li>
+                <li class="item"><a href="/attendance">Marks</a></li>
                 <li class="item"><a href="viewmarks.html">Attendance</a></li>
-                <li class="item"><a href="leaveform.html">Leave Request</a></li>
+                <li class="item"><a href="/leaveform">Leave Request</a></li>
                 <li class="item"><a href="">Fee Challan</a></li>
                 <li class="item"><a href="">Class behaviour</a></li>
                 <li class="item"><a href="">log out</a></li>
@@ -38,12 +38,11 @@
 
         <div class="card2">
             <h1>Fee Concession</h1>
-            <form action="">
+            <form method="POST" action="{{ url_for('submit_fee_concession') }}">
                 <div class="form-group">
                     <br>
                     Reason : <textarea id="reason" name="reason" placeholder="" class="field" required></textarea><br><br>
                     Additional Details : <textarea id="details" name="details" placeholder="" class="field"></textarea><br><br>
-                    Supporting Documents : <input type="file" id="documents" name="" class="field"><br><br>
                     <button class="btn" id="btn2">Submit</button>
                 </div>
             </form>

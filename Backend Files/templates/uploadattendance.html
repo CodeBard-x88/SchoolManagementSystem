@@ -1,28 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="admin.css">
+    <title>SMS</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css') }}">
 </head>
-<nav class="navbar">
-    <section class="container">
-        <div class="logo">
-            <h1>Teacher Dashboard</h1>
-        </div>
-
-        <ul>
-            <li class="item"><a href="uploadmarks.html">Upload Marks</a></li>
-            <li class="item"><a href="">track attitude</a></li>
-            <li class="item"><a href="">log out</a></li>
-        </ul>
-    </section>
-</nav>
-
 <body>
-    <h1>upload attendance</h1>
-</body>
+  
+    <nav class="navbar">
+        <section class="container">
+            <div class="logo"> <href="teadash.html"></a>
+                <h1>Teacher Dashboard</h1>
+            </div>
+    
+            <ul>
+            <li class="item"><a href="/add_marks">Marks</a></li>
+            <li class="item"><a href="/add_attendance"> Attendance</a></li>
+            <li class="item"><a href="/add_attitude">track attitude</a></li>
+            </ul>
+    
+            <div class="logout-box">
+                <a href="/admin_logout">Logout</a>
+            </div>
+    
+        </section>
+        </nav>
+        
 
+    <form method="POST" action="{{ url_for('submit_attendance') }}">
+
+        <section class="container11">
+            <h2>Upload Attendance</h2>
+            
+                <table class="table">
+                    <!-- <thead>
+                        <tr>
+                            <th scope="col">SNo</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Test Type</th>
+                            <th scope="col">Obtained Marks</th>
+                            <th scope="col">Total Marks</th>
+                        </tr>
+                    </thead> -->
+                    
+                    <thead>
+                        <tr>
+                       
+                        <th>Name</th>
+                        <th>Class</th>
+                       <th>Date</th>
+                        <th>Attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Add jfor here and take value from db --> 
+                        {% for student in students %}
+                        <tr>
+                       
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.enrolled_class }}</td>
+                        <td> <input type="date" id="Date" name="Date" placeholder="Date" class="field" required><br>
+                        </td>
+                        <td> 
+                            <input type="text" id="status" name="status" placeholder="status" class="field" required><br>
+                        </td>
+
+                    
+
+                        </tr>
+                        {% endfor %}
+
+                        
+
+
+
+                        <!-- Add more rows as needed -->
+                    </tbody>
+
+
+
+                </table>
+
+                <button style="text-align: right;"  > Submit </button>
+        </section>
+    </form>
+
+
+</body>
 </html>

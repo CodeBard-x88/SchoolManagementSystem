@@ -13,6 +13,15 @@ class Parent(Users, db.Model):
     def __init__(self, name=None, username=None, password=None, email=None, phone=None):
         super().__init__(name, username, password, email, phone)
 
+
+    @classmethod
+    def ViewParents(cls):
+        parents=cls.query.all()
+        headings=['Name','Username','Email','Phone']
+
+        data=[[parent.name,parent.username,parent.email,parent.phone] for parent in parents]
+
+        return headings,data
     
     
     
